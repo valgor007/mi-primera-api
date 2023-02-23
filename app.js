@@ -8,7 +8,6 @@ app.use(express.json())
 
 app.use(usersRouter)
 
-
 app.get('/', (request, response) => {
   response
     .status(200)
