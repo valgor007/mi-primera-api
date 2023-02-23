@@ -51,10 +51,28 @@ export const readUser = (request, response) => {
 
 // PUT/PATCH /users/1 - Actualizar Usuario dado su ID
 export const updateUser = (request, response) => {
-  response.status(200).send({ message: 'Usuario Actualizado'})
+  const { id } = request.params
+  const { name, email, password } = request.body
+  const findUser = users.find((user) => user.id == id)
+  console.log(findUser)
+  /// una vez que tenga el usuario, actualizar los datos que se envian desde cliente
+  // request.body
+  const updatedUser = { 
+    ...findUser, 
+    name,
+    email,
+    password
+  }
+  /// luego que lo actualizaron, enviar una respuesta
+  response.status(200).send(updatedUser)
 }
 
 // DELETE /users/1 - Eliminar Usuario dado su ID
 export const deleteUser = (request, response) => {
-  response.status(200).send({ message: 'Usuario Eliminado'})
+  // buscar el registro de usuario del array users, dado un id que viene en la url
+  const { id } = request.params
+  const userIndex = users.findIndex(user => user.id == id)
+  // eliminarlo del array usando slice() y posterior indicar que el mismo fue eliminado
+  users.splice(userIndex, 1)
+  response.status(200).send(users)
 }
