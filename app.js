@@ -13,7 +13,7 @@ app.use(usersRouter)
 // Aqui invocamos la conexion con la base de datos (mongo)
 mongoDbConnection()
 
-app.get('/', (request, response) => {
+app.use((request, response) => {
   response
     .status(200)
     .send({ 
