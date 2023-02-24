@@ -15,7 +15,7 @@ router.route('/users')
 
 router.route('/users/:id')
   .get(readUser)
-  .put(updateUser)
+  .patch(updateUser)
   .delete(deleteUser)
 
 export default router

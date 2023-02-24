@@ -32,10 +32,10 @@ export const createUser = async (request, response) => {
   }
 }
 
-// GET /users/1 - Leer datos de Usuario dado su ID
+// GET /users/:id - Leer datos de Usuario dado su ID
 export const readUser = async (request, response) => {
   try {
-    const { id } = request.params
+    const { id } = request.params // se obtiene de la url de la peticion
     const user = await User.findById(id)
 
     if (!user) {
@@ -50,13 +50,13 @@ export const readUser = async (request, response) => {
   }
 }
 
-// PATCH /users/1 - Actualizar Usuario dado su ID
+// PUT/PATCH /users/:id - Actualizar Usuario dado su ID
 export const updateUser = async (request, response) => {
   try {
     const { id } = request.params
-    const bodyParams = {...request.body}
+    const bodyParams = { ...request.body }
 
-    const updatedUser = await User.findById(id, bodyParams)
+    const updatedUser = await User.findByIdAndUpdate(id, bodyParams, { new: true })
 
     response.status(201).send(updatedUser)
   } catch(error) {
@@ -64,7 +64,7 @@ export const updateUser = async (request, response) => {
   }
 }
 
-// DELETE /users/1 - Eliminar Usuario dado su ID
+// DELETE /users/:id - Eliminar Usuario dado su ID
 export const deleteUser = async (request, response) => {
   try {
     const { id } = request.params
