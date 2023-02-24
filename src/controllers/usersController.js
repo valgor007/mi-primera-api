@@ -12,7 +12,24 @@ export const indexUsers = async (request, response) => {
 }
 
 // POST /users - Crear Nuevo Usuario
-export const createUser = (request, response) => {
+export const createUser = async (request, response) => {
+  try {
+    // obtenemos los datos de la solicitud
+    const { name, email, password } = request.body
+    // preparamos los datos que vienen del cliente en nuestro modelo
+    const newUser = new User({
+      name,
+      email,
+      password
+    })
+    // salvamos en nuestra base de datos
+    await newUser.save()
+    // enviamos la respuesta al cliente
+    response.status(201).send(newUser)
+
+  } catch(error) {
+    console.error(error)
+  }
 }
 
 // GET /users/1 - Leer datos de Usuario dado su ID
