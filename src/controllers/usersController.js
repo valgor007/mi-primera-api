@@ -1,5 +1,14 @@
-// GET /users - Index o Listar Usuarios
-export const indexUsers = (request, response) => {
+import User from '../models/User'
+
+// GET /users - Index o Listar todos los Usuarios
+export const indexUsers = async (request, response) => {
+  try {
+    const users = await User.find({})
+
+    response.status(200).send(users)
+  } catch(error) {
+    console.error(error)
+  }
 }
 
 // POST /users - Crear Nuevo Usuario
