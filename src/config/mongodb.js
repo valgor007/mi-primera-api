@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const DB_NAME = 'BlogApp'
-const uri = `mongodb+srv://raf4q0:W3lc0m3-KDM1@kodemiadb.k9jabaq.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+const uri = `mongodb+srv://rafaupup:W3lc0m3-KDM1@cluster0.zaywkgd.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
 
 export const mongoDbConnection = async () => {
   try {
