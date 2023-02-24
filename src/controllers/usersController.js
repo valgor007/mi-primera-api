@@ -76,7 +76,7 @@ export const deleteUser = async (request, response) => {
       })
     }
     
-    response.sendStatus(204);
+    response.status(200).send({ message: 'Registro eliminado correctamente'});
   } catch (error) {
     console.log(error)
   }

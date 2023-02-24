@@ -2,6 +2,7 @@ import express from 'express'
 
 import { mongoDbConnection } from './src/config/mongodb'
 import usersRouter from './src/routes/usersRouter'
+// import postsRouter from './src/routes/postsRouter'
 
 const app = express()
 
@@ -9,6 +10,7 @@ app.use(express.json())
 
 // Aca se activa nuestro enrutador de users
 app.use(usersRouter)
+// app.use(postsRouter)
 
 // Aqui invocamos la conexion con la base de datos (mongo)
 mongoDbConnection()
